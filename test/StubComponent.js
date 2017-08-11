@@ -1,10 +1,9 @@
-var React = require('react');
+let React = require('react');
 
-module.exports = function(mockTagName: string){
-  return React.createClass({
-    render: function() {
-      var mockTagName = mockTagName || "div";
-      return React.DOM[mockTagName](null, this.props.children);
-    }
-  });
+module.exports = function(mockTagName: string) {
+  return (props) => {
+    let _mockTagName = mockTagName || 'div';
+
+    return React.DOM[_mockTagName](null, props.children);
+  };
 };

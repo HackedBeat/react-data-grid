@@ -1,4 +1,5 @@
 const React = require('react');
+const createReactClass = require('create-react-class');
 const PropTypes = require('prop-types');
 const joinClasses = require('classnames');
 const keyboardHandlerMixin = require('../KeyboardHandlerMixin');
@@ -6,7 +7,8 @@ const SimpleTextEditor = require('./SimpleTextEditor');
 const isFunction = require('../utils/isFunction');
 require('../../../../themes/react-data-grid-core.css');
 
-const EditorContainer = React.createClass({
+const EditorContainer = createReactClass({
+  displayName: 'EditorContainer',
   mixins: [keyboardHandlerMixin],
 
   propTypes: {

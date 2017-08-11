@@ -1,9 +1,12 @@
+/* eslint-disable no-alert */
+
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
 
-const Example = React.createClass({
-  getInitialState() {
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
     this._columns = [
       { key: 'id', name: 'ID' },
       { key: 'title', name: 'Title', editable: true },
@@ -22,26 +25,26 @@ const Example = React.createClass({
 
     this._rows = rows;
 
-    return { selectedRows: [] };
-  },
+    this.state = { selectedRows: [] };
+  }
 
-  rowGetter(index) {
+  rowGetter = (index) => {
     return this._rows[index];
-  },
+  };
 
-  onRowSelect(rows) {
+  onRowSelect = (rows) => {
     this.setState({ selectedRows: rows });
-  },
+  };
 
-  onCellSelected({ rowIdx, idx }) {
+  onCellSelected = ({ rowIdx, idx }) => {
     this.grid.openCellEditor(rowIdx, idx);
-  },
+  };
 
-  onCellDeSelected({ rowIdx, idx }) {
+  onCellDeSelected = ({ rowIdx, idx }) => {
     if (idx === 2) {
       alert('the editor for cell (' + rowIdx + ',' + idx + ') should have just closed');
     }
-  },
+  };
 
   render() {
     const rowText = this.state.selectedRows.length === 1 ? 'row' : 'rows';
@@ -49,7 +52,7 @@ const Example = React.createClass({
       <div>
         <span>{this.state.selectedRows.length} {rowText} selected</span>
         <ReactDataGrid
-          ref={ node => this.grid = node }
+          ref={ node => {this.grid = node;} }
           rowKey="id"
           columns={this._columns}
           rowGetter={this.rowGetter}
@@ -62,7 +65,7 @@ const Example = React.createClass({
           onCellDeSelected={this.onCellDeSelected} />
       </div>);
   }
-});
+}
 
 const exampleDescription = (
   <div>

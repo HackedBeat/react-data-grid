@@ -3,8 +3,8 @@ let ColsDescription = require('./ColsDescription');
 let RowsDescription = require('./RowsDescription');
 let RenderGridDescription = require('./RenderGrid');
 
-module.exports = React.createClass({
-  render: function() {
+module.exports = class extends React.Component {
+  render() {
     return (
       <div>
         <h3 id="js-basic-example">A Simple Example</h3>
@@ -15,4 +15,4 @@ module.exports = React.createClass({
         <RenderGridDescription />
       </div>);
   }
-});
+};

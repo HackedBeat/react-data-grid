@@ -1,12 +1,11 @@
 /* @flow */
 /** @jsx dom */
-'use strict';
 
-var React    = require('react');
-var ReactDOM = require('react-dom');
+
+let React    = require('react');
+let ReactDOM = require('react-dom');
 
 class PropTestUtils {
-
   constructor(klass, props, container, callback) {
     this.klass = klass;
     this.container = container || document.createElement('div');
@@ -16,7 +15,7 @@ class PropTestUtils {
   }
 
   render(callback) {
-    var element = React.createElement(this.klass, this.props);
+    let element = React.createElement(this.klass, this.props);
     this.component = ReactDOM.render(element, this.container, callback);
   }
 
@@ -35,7 +34,7 @@ class PropTestUtils {
       return;
     }
     Object.assign(this.props, partialProps);
-    var element = React.createElement(this.klass, this.props);
+    let element = React.createElement(this.klass, this.props);
     this.component = ReactDOM.render(element, this.container, callback);
   }
 
@@ -43,7 +42,6 @@ class PropTestUtils {
     ReactDOM.unmountComponentAtNode(this.container);
     this.klass = null;
   }
-
 }
 
 module.exports = PropTestUtils;

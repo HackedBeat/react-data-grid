@@ -2,14 +2,14 @@ const React = require('react');
 const Draggable = require('./Draggable');
 require('../../../themes/react-data-grid-header.css');
 
-const ResizeHandle = React.createClass({
-  style: {
+class ResizeHandle extends React.Component {
+  style = {
     position: 'absolute',
     top: 0,
     right: 0,
     width: 6,
     height: '100%'
-  },
+  };
 
   render(): ?ReactElement {
     return (
@@ -19,6 +19,8 @@ const ResizeHandle = React.createClass({
       />
     );
   }
-});
+}
+
+ResizeHandle.displayName = 'ResizeHandle';
 
 module.exports = ResizeHandle;

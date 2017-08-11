@@ -1,4 +1,5 @@
 const React = require('react');
+const createReactClass = require('create-react-class');
 const PropTypes = require('prop-types');
 const shallowEqual = require('fbjs/lib/shallowEqual');
 const BaseHeaderCell = require('./HeaderCell');
@@ -21,7 +22,9 @@ const HeaderRowStyle = {
 // The list of the propTypes that we want to include in the HeaderRow div
 const knownDivPropertyKeys = ['width', 'height', 'style', 'onScroll'];
 
-const HeaderRow = React.createClass({
+const HeaderRow = createReactClass({
+  displayName: 'HeaderRow',
+
   propTypes: {
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     height: PropTypes.number.isRequired,

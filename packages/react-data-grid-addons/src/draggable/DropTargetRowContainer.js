@@ -5,7 +5,6 @@ import { DropTarget } from 'react-dnd';
 import { RowComparer as shouldRowUpdate } from 'react-data-grid';
 
 let rowDropTarget = (Row) => class extends React.Component {
-
   shouldComponentUpdate(nextProps) {
     return shouldRowUpdate(nextProps, this.props);
   }
@@ -18,7 +17,7 @@ let rowDropTarget = (Row) => class extends React.Component {
     const { connectDropTarget, isOver, canDrop} = this.props;
     let overlayTop = this.props.idx * this.props.height;
     return connectDropTarget(<div>
-      <Row ref={(node) => this.row = node} {...this.props}/>
+      <Row ref={(node) => {this.row = node;}} {...this.props}/>
       {isOver && canDrop && <div style={{
         position: 'absolute',
         top: overlayTop,

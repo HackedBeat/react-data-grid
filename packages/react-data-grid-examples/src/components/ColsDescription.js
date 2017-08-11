@@ -1,7 +1,7 @@
 const React = require('react');
 
-module.exports = React.createClass({
-  render: function() {
+module.exports = class extends React.Component {
+  render() {
     const codeSample = `const columns = [
   {
     key: 'id',
@@ -25,4 +25,4 @@ module.exports = React.createClass({
         </div>
       </div>);
   }
-});
+};

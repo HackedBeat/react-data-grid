@@ -8,8 +8,8 @@ let componentsDocs = require('./scripts/documentation03-components');
 
 let { Route, RouteHandler } = ReactRouter;
 
-let App = React.createClass({
-  render: function() {
+class App extends React.Component {
+  render() {
     return (
       <div>
         <h1 className="page-header">Documentation</h1>
@@ -17,7 +17,7 @@ let App = React.createClass({
       </div>
     );
   }
-});
+}
 
 let routes = (
   <Route handler={App}>

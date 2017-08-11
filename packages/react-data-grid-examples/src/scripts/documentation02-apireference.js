@@ -1,8 +1,8 @@
 const React = require('react');
 let GridRowsUpdateEvent = 'type GridRowsUpdateEvent = {\n\tcellKey: string,\n\tfromRow: number,\n\ttoRow: number,\n\trowIds: array,\n\tupdated: object,\n\taction: string\n}';
 
-module.exports = React.createClass({
-  render: function() {
+module.exports = class extends React.Component {
+  render() {
     return (
       <div>
         <h1 id="js-api-refernce">API Reference</h1>
@@ -23,4 +23,4 @@ module.exports = React.createClass({
       </div>
     );
   }
-});
+};

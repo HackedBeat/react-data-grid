@@ -2,9 +2,8 @@ const React = require('react');
 let RowsDescription = require('./RowsDescription');
 let ColsDescription = require('./ColsDescription');
 
-module.exports = React.createClass({
-
-  render: function() {
+module.exports = class extends React.Component {
+  render() {
     return (
       <div>
         <h3 id="js-basic-example">{this.props.title}</h3>
@@ -20,4 +19,4 @@ module.exports = React.createClass({
       </div>
     );
   }
-});
+};

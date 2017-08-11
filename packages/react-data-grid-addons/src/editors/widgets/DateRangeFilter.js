@@ -1,38 +1,39 @@
-const PropTypes = require('prop-types');
 const React = require('react');
 const ReactDOM = require('react-dom');
-const Moment 		 = require('moment');
-const $					 = require('jquery');
+const PropTypes = require('prop-types');
+const Moment = require('moment');
+const $ = require('jquery');
 
 const DateRangePicker = function(element, options, cb) {
-	// by default, the daterangepicker element is placed at the bottom of HTML body
+  // by default, the daterangepicker element is placed at the bottom of HTML body
   this.parentEl = 'body';
-	// element that triggered the date range picker
+  // element that triggered the date range picker
   this.element = $(element);
-	// tracks visible state
+  // tracks visible state
   this.isShowing = false;
 
-	// create the picker HTML object
-  const DRPTemplate = '<div class="daterangepicker dropdown-menu">' +
-					'<div class="calendar left"></div>' +
-					'<div class="calendar right"></div>' +
-					'<div class="ranges">' +
-						'<div class="range_inputs">' +
-							'<div class="daterangepicker_start_input">' +
-								'<label for="daterangepicker_start"></label>' +
-								'<input class="input-mini" type="text" name="daterangepicker_start" value="" />' +
-							'</div>' +
-							'<div class="daterangepicker_end_input">' +
-								'<label for="daterangepicker_end"></label>' +
-								'<input class="input-mini" type="text" name="daterangepicker_end" value="" />' +
-							'</div>' +
-							'<button class="applyBtn" disabled="disabled"></button>&nbsp;' +
-							'<button class="cancelBtn"></button>' +
-						'</div>' +
-					'</div>' +
-				'</div>';
+  // create the picker HTML object
+  const DRPTemplate = (
+    '<div class="daterangepicker dropdown-menu">' +
+     '<div class="calendar left"></div>' +
+     '<div class="calendar right"></div>' +
+     '<div class="ranges">' +
+      '<div class="range_inputs">' +
+       '<div class="daterangepicker_start_input">' +
+        '<label for="daterangepicker_start"></label>' +
+        '<input class="input-mini" type="text" name="daterangepicker_start" value="" />' +
+       '</div>' +
+       '<div class="daterangepicker_end_input">' +
+        '<label for="daterangepicker_end"></label>' +
+        '<input class="input-mini" type="text" name="daterangepicker_end" value="" />' +
+       '</div>' +
+       '<button class="applyBtn" disabled="disabled"></button>&nbsp;' +
+       '<button class="cancelBtn"></button>' +
+      '</div>' +
+     '</div>' +
+    '</div>');
 
-	// custom options
+  // custom options
   let customOptions = {};
   if (typeof options === 'object' || options != null) {
     customOptions = options;
@@ -43,7 +44,7 @@ const DateRangePicker = function(element, options, cb) {
 
   this.setcustomOptions(customOptions, cb);
 
-	// apply CSS classes and labels to buttons
+  // apply CSS classes and labels to buttons
   let c = this.container;
   $.each(this.buttonClasses, function(idx, val) {
     c.find('button').addClass(val);
@@ -62,26 +63,26 @@ const DateRangePicker = function(element, options, cb) {
   this.container.find('.applyBtn').html(this.locale.applyLabel);
   this.container.find('.cancelBtn').html(this.locale.cancelLabel);
 
-	// event listeners
+  // event listeners
   this.container.find('.calendar')
-			.on('click.daterangepicker', '.prev', $.proxy(this.clickPrev, this))
-			.on('click.daterangepicker', '.next', $.proxy(this.clickNext, this))
-			.on('click.daterangepicker', 'td.available', $.proxy(this.clickDate, this))
-			.on('mouseenter.daterangepicker', 'td.available', $.proxy(this.hoverDate, this))
-			.on('mouseleave.daterangepicker', 'td.available', $.proxy(this.updateFormInputs, this))
-			.on('change.daterangepicker', 'select.yearselect', $.proxy(this.updateMonthYear, this))
-			.on('change.daterangepicker', 'select.monthselect', $.proxy(this.updateMonthYear, this))
-			.on('change.daterangepicker', 'select.hourselect,select.minuteselect,select.ampmselect', $.proxy(this.updateTime, this));
+    .on('click.daterangepicker', '.prev', $.proxy(this.clickPrev, this))
+    .on('click.daterangepicker', '.next', $.proxy(this.clickNext, this))
+    .on('click.daterangepicker', 'td.available', $.proxy(this.clickDate, this))
+    .on('mouseenter.daterangepicker', 'td.available', $.proxy(this.hoverDate, this))
+    .on('mouseleave.daterangepicker', 'td.available', $.proxy(this.updateFormInputs, this))
+    .on('change.daterangepicker', 'select.yearselect', $.proxy(this.updateMonthYear, this))
+    .on('change.daterangepicker', 'select.monthselect', $.proxy(this.updateMonthYear, this))
+    .on('change.daterangepicker', 'select.hourselect,select.minuteselect,select.ampmselect', $.proxy(this.updateTime, this));
 
   this.container.find('.ranges')
-			.on('click.daterangepicker', 'button.applyBtn', $.proxy(this.clickApply, this))
-			.on('click.daterangepicker', 'button.cancelBtn', $.proxy(this.clickCancel, this))
-			.on('click.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.showCalendars, this))
-			.on('change.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.inputsChanged, this))
-			.on('keydown.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.inputsKeydown, this))
-			.on('click.daterangepicker', 'li', $.proxy(this.clickRange, this))
-			.on('mouseenter.daterangepicker', 'li', $.proxy(this.enterRange, this))
-			.on('mouseleave.daterangepicker', 'li', $.proxy(this.updateFormInputs, this));
+    .on('click.daterangepicker', 'button.applyBtn', $.proxy(this.clickApply, this))
+    .on('click.daterangepicker', 'button.cancelBtn', $.proxy(this.clickCancel, this))
+    .on('click.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.showCalendars, this))
+    .on('change.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.inputsChanged, this))
+    .on('keydown.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.inputsKeydown, this))
+    .on('click.daterangepicker', 'li', $.proxy(this.clickRange, this))
+    .on('mouseenter.daterangepicker', 'li', $.proxy(this.enterRange, this))
+    .on('mouseleave.daterangepicker', 'li', $.proxy(this.updateFormInputs, this));
 
   if (this.element.is('input')) {
     this.element.on({
@@ -192,8 +193,8 @@ DateRangePicker.prototype = {
 
     if (typeof options.locale === 'object') {
       if (typeof options.locale.daysOfWeek === 'object') {
-				// Create a copy of daysOfWeek to avoid modification of original
-				// options object for reusability in multiple daterangepicker instances
+        // Create a copy of daysOfWeek to avoid modification of original
+        // options object for reusability in multiple daterangepicker instances
         this.locale.daysOfWeek = options.locale.daysOfWeek.slice();
       }
 
@@ -323,7 +324,7 @@ DateRangePicker.prototype = {
       });
 
       let list = '<ul>';
-      this.ranges.forEach((range) => list += '<li>' + range + '</li>');
+      this.ranges.forEach((range) => {list += '<li>' + range + '</li>';});
 
       list += '<li>' + this.locale.customRangeLabel + '</li>';
       list += '</ul>';
@@ -549,11 +550,11 @@ DateRangePicker.prototype = {
     this._outsideClickProxy = $.proxy(function(e) { this.outsideClick(e); }, this);
     // Bind global datepicker mousedown for hiding and
     $(document)
-    .on('mousedown.daterangepicker', this._outsideClickProxy)
+      .on('mousedown.daterangepicker', this._outsideClickProxy)
     // also explicitly play nice with Bootstrap dropdowns, which stopPropagation when clicking them
-    .on('click.daterangepicker', '[data-toggle=dropdown]', this._outsideClickProxy)
+      .on('click.daterangepicker', '[data-toggle=dropdown]', this._outsideClickProxy)
     // and also close when focus changes to outside the picker (eg. tabbing between controls)
-    .on('focusin.daterangepicker', this._outsideClickProxy);
+      .on('focusin.daterangepicker', this._outsideClickProxy);
 
     this.isShowing = true;
     this.element.trigger('show.daterangepicker', this);
@@ -564,7 +565,7 @@ DateRangePicker.prototype = {
     // if the page is clicked anywhere except within the daterangerpicker/button
     // itself then call this.hide()
     if (
-    target.closest(this.element).length ||
+      target.closest(this.element).length ||
     target.closest(this.container).length ||
     target.closest('.calendar-date').length
     ) return;
@@ -576,9 +577,9 @@ DateRangePicker.prototype = {
     if (!this.isShowing) return;
 
     $(document)
-    .off('mousedown.daterangepicker')
-    .off('click.daterangepicker', '[data-toggle=dropdown]')
-    .off('focusin.daterangepicker');
+      .off('mousedown.daterangepicker')
+      .off('click.daterangepicker', '[data-toggle=dropdown]')
+      .off('focusin.daterangepicker');
 
     this.element.removeClass('active');
     this.container.hide();
@@ -868,7 +869,7 @@ DateRangePicker.prototype = {
         if (this.startDate.isSame(this.ranges[range][0]) && this.endDate.isSame(this.ranges[range][1])) {
           customRange = false;
           this.chosenLabel = this.container.find('.ranges li:eq(' + i + ')')
-          .addClass('active').html();
+            .addClass('active').html();
         }
       } else {
         // ignore times when comparing dates if time picker is not enabled
@@ -1135,13 +1136,8 @@ let validateDate = function(props, propName) {
   }
 };
 
-let DateRangeFilter = React.createClass({
-
-  getInitialState: function() {
-    return {dateRange: ''};
-  },
-
-  propTypes: {
+class DateRangeFilter extends React.Component {
+  static propTypes = {
     format: PropTypes.string.isRequired,
     ranges: PropTypes.object.isRequired,
     onApply: PropTypes.func,
@@ -1149,9 +1145,11 @@ let DateRangeFilter = React.createClass({
     onblur: PropTypes.func,
     startDate: validateDate,
     endDate: validateDate
-  },
+  };
 
-  componentDidMount: function() {
+  state = {dateRange: ''};
+
+  componentDidMount() {
     // initialise jQuery date range widget -
     let $calendarNode = $(ReactDOM.findDOMNode(this.refs.calendar));
     let $calendar = $calendarNode.daterangepicker({ranges: this.props.ranges, format: this.props.format, opens: 'left', locale: { cancelLabel: 'Clear' }, applyClass: 'btn-primary'  });
@@ -1164,39 +1162,39 @@ let DateRangeFilter = React.createClass({
     }
 
     $calendar.on('apply.daterangepicker', this.handleApply).on('cancel.daterangepicker', this.handleClear);
-  },
+  }
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     // destroy widget on unMount
     this.calendar.remove();
-  },
+  }
 
-  handleApply: function(ev, picker) {
+  handleApply = (ev, picker) => {
     if (this.props.onApply) {
       // return moment instances for start and end date ranges
       this.props.onApply(picker.startDate, picker.endDate);
     }
 
     this.setState({dateRange: picker.startDate.format(picker.format) + ' - ' + picker.endDate.format(picker.format)});
-  },
+  };
 
-  handleClear: function() {
+  handleClear = () => {
     this.setState({dateRange: ''});
     if (this.props.onApply) {
       // return moment instances for start and end date ranges
       this.props.onApply(null, null);
     }
-  },
+  };
 
-  getTitle: function() {
+  getTitle = () => {
     return this.state.dateRange !== '' ? this.state.dateRange : this.props.title;
-  },
+  };
 
-  render: function() {
+  render() {
     return (
-      <input ref={node => this.calendar = node} onBlur={this.props.onblur}/>
+      <input ref={node => {this.calendar = node;}} onBlur={this.props.onblur}/>
     );
   }
-});
+}
 
 module.exports = DateRangeFilter;

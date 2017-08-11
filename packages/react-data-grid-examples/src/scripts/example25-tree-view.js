@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
@@ -48,17 +50,18 @@ let columns = [
   }
 ];
 
-const Example = React.createClass({
-  getInitialState() {
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
     let rows = createRows();
-    return { expanded: {}, rows: rows };
-  },
+    this.state = { expanded: {}, rows: rows };
+  }
 
-  getRows(i) {
+  getRows = (i) => {
     return this.state.rows[i];
-  },
+  };
 
-  getSubRowDetails(rowItem) {
+  getSubRowDetails = (rowItem) => {
     let isExpanded = this.state.expanded[rowItem.name] ? this.state.expanded[rowItem.name] : false;
     return {
       group: rowItem.children && rowItem.children.length > 0,
@@ -69,9 +72,9 @@ const Example = React.createClass({
       siblingIndex: rowItem.siblingIndex,
       numberSiblings: rowItem.numberSiblings
     };
-  },
+  };
 
-  onCellExpand(args) {
+  onCellExpand = (args) => {
     let rows = this.state.rows.slice(0);
     let rowKey = args.rowData.name;
     let rowIndex = rows.indexOf(args.rowData);
@@ -88,18 +91,18 @@ const Example = React.createClass({
     }
 
     this.setState({ expanded: expanded, rows: rows });
-  },
+  };
 
-  updateSubRowDetails(subRows, parentTreeDepth) {
+  updateSubRowDetails = (subRows, parentTreeDepth) => {
     let treeDepth = parentTreeDepth || 0;
     subRows.forEach((sr, i) => {
       sr.treeDepth = treeDepth + 1;
       sr.siblingIndex = i;
       sr.numberSiblings = subRows.length;
     });
-  },
+  };
 
-  onDeleteSubRow(args) {
+  onDeleteSubRow = (args) => {
     let idToDelete = args.rowData.id;
     let rows = this.state.rows.slice(0);
     // Remove sub row from parent row.
@@ -116,12 +119,12 @@ const Example = React.createClass({
     // Remove sub row from flattened rows.
     rows = rows.filter(r => r.id !== idToDelete);
     this.setState({ rows });
-  },
+  };
 
-  onAddSubRow(args) {
+  onAddSubRow = (args) => {
     console.log('add sub row');
     console.log(args);
-  },
+  };
 
   render() {
     return (<ReactDataGrid
@@ -135,7 +138,7 @@ const Example = React.createClass({
       onCellExpand={this.onCellExpand}
       onAddSubRow={this.onAddSubRow} />);
   }
-});
+}
 
 module.exports = exampleWrapper({
   WrappedComponent: Example,
