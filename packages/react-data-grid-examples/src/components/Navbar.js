@@ -7,16 +7,16 @@ class Navbar extends React.Component {
       <div className="navbar navbar-fixed-top headroom" >
         <div className="container">
           <div className="navbar-header">
-          <a href="https://github.com/adazzle/react-data-grid/fork"><img className="github-ribbon" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-green@2x.png" alt="Fork me on GitHub"></img></a>
+            <a href="https://github.com/adazzle/react-data-grid/fork"><img className="github-ribbon" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-green@2x.png" alt="Fork me on GitHub" /></a>
 
-            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span className="icon-bar"></span> <span className="icon-bar"></span> <span className="icon-bar"></span> </button>
+            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span className="icon-bar" /> <span className="icon-bar" /> <span className="icon-bar" /> </button>
             <a className="navbar-brand" href="https://www.adazzle.com"><img className="header-logo" src="assets/images/AdazzleHeaderLogo.png" /></a> <a className="navbar-brand" href="index.html#">React Data Grid</a>
           </div>
           <div className="navbar-collapse collapse">
             <ul className="nav navbar-nav pull-right">
               <li className="active"><a href="index.html">Home</a></li>
               <li className="dropdown">
-                <a href="#" className="dropdown-toggle" data-toggle="dropdown">Documentation <b className="caret"></b></a>
+                <a href="#" className="dropdown-toggle" data-toggle="dropdown">Documentation <b className="caret" /></a>
                 <ul className="dropdown-menu">
                   <li><a href="documentation.html#/gettingstarted">Getting Started</a></li>
                   <li><a href="documentation.html#/apireference">API Reference</a></li>
@@ -25,7 +25,7 @@ class Navbar extends React.Component {
               </li>
 
               <li className="dropdown">
-                <a href="#" className="dropdown-toggle" data-toggle="dropdown">Examples <b className="caret"></b></a>
+                <a href="#" className="dropdown-toggle" data-toggle="dropdown">Examples <b className="caret" /></a>
                 <ExampleList links={this.props.exampleLinks} className="dropdown-menu" />
               </li>
             </ul>

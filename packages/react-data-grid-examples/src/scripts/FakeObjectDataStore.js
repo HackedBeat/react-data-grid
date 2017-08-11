@@ -1,9 +1,9 @@
-var faker = require('faker');
+let faker = require('faker');
 faker.locale = 'en_GB';
-var SIZE = 2000;
-var _cache = [];
+let SIZE = 2000;
+let _cache = [];
 
-function createFakeRowObjectData(/*number*/ index) {
+function createFakeRowObjectData(/* number*/ index) {
   return {
     id: 'id_' + index,
     avartar: faker.image.avatar(),
@@ -23,8 +23,8 @@ function createFakeRowObjectData(/*number*/ index) {
   };
 }
 
-function getObjectAt(/*number*/ index) /*?object*/ {
-  if (index < 0 || index > SIZE){
+function getObjectAt(/* number*/ index) /* ?object*/ {
+  if (index < 0 || index > SIZE) {
     return undefined;
   }
   if (_cache[index] === undefined) {
@@ -37,16 +37,16 @@ function getSize() {
   return SIZE;
 }
 
-function createRows(numberOfRows){
-  for (var i = 0; i < numberOfRows; i++){
+function createRows(numberOfRows) {
+  for (let i = 0; i < numberOfRows; i++) {
     _cache[i] = createFakeRowObjectData(i);
   }
   return _cache;
 }
 
-var FakeObjectDataListStore = {
-  getObjectAt : getObjectAt,
-  getSize     : getSize,
-  createRows  : createRows
+let FakeObjectDataListStore = {
+  getObjectAt: getObjectAt,
+  getSize: getSize,
+  createRows: createRows
 };
 module.exports = FakeObjectDataListStore;

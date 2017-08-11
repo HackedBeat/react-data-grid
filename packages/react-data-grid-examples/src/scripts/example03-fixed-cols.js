@@ -81,7 +81,7 @@ const Example = React.createClass({
   }
 });
 
-const exampleDescription = <p>To make a given column frozen, set <code>column.locked = true</code>. In this example, the ID columns has been frozen and will remain in position as you scroll horizontally</p>
+const exampleDescription = <p>To make a given column frozen, set <code>column.locked = true</code>. In this example, the ID columns has been frozen and will remain in position as you scroll horizontally</p>;
 
 module.exports = exampleWrapper({
   WrappedComponent: Example,

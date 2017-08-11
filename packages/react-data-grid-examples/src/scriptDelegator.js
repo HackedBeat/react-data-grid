@@ -1,11 +1,13 @@
-var isDevEnv = function() {
+/* eslint-disable no-unused-vars */
+
+let isDevEnv = function() {
   return window.location.hostname === 'localhost';
 };
 
-var delegateScript = function(fileName) {
-  var src = (isDevEnv() ? 'http://localhost:8080/' : 'dist/') + fileName;
+let delegateScript = function(fileName) {
+  let src = (isDevEnv() ? 'http://localhost:8080/' : 'dist/') + fileName;
 
-  var script = document.createElement('script');
+  let script = document.createElement('script');
   script.setAttribute('src', src);
   document.getElementsByTagName('body')[0].appendChild(script);
 };

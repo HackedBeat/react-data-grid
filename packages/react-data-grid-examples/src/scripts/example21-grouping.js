@@ -135,7 +135,7 @@ const CustomToolbar = React.createClass({
   render() {
     return (<Toolbar>
       <GroupedColumnsPanel groupBy={this.props.groupBy} onColumnGroupAdded={this.props.onColumnGroupAdded} onColumnGroupDeleted={this.props.onColumnGroupDeleted}/>
-      </Toolbar>);
+    </Toolbar>);
   }
 });
 
@@ -162,17 +162,17 @@ const Example = React.createClass({
 
   onColumnGroupAdded(colName) {
     let columnGroups = this.state.groupBy.slice(0);
-    let activeColumn = columns.find((c) => c.key === colName)
+    let activeColumn = columns.find((c) => c.key === colName);
     let isNotInGroups = columnGroups.find((c) => activeColumn.key === c.name) == null;
     if (isNotInGroups) {
       columnGroups.push({key: activeColumn.key, name: activeColumn.name});
     }
-   
+
     this.setState({groupBy: columnGroups});
   },
 
   onColumnGroupDeleted(name) {
-    let columnGroups = this.state.groupBy.filter(function(g){
+    let columnGroups = this.state.groupBy.filter(function(g) {
       return typeof g === 'string' ? g !== name : g.key !== name;
     });
     this.setState({groupBy: columnGroups});
@@ -188,18 +188,18 @@ const Example = React.createClass({
   render() {
     return (
       <DraggableContainer>
-          <ReactDataGrid
-            ref={ node => this.grid = node }
-            enableCellSelect={true}
-            enableDragAndDrop={true}
-            columns={columns}
-            rowGetter={this.getRowAt}
-            rowsCount={this.getSize()}
-            onRowExpandToggle={this.onRowExpandToggle}
-            toolbar={<CustomToolbar groupBy={this.state.groupBy} onColumnGroupAdded={this.onColumnGroupAdded} onColumnGroupDeleted={this.onColumnGroupDeleted}/>}
-            rowHeight={50}
-            minHeight={600}
-            />
+        <ReactDataGrid
+          ref={ node => {this.grid = node;} }
+          enableCellSelect={true}
+          enableDragAndDrop={true}
+          columns={columns}
+          rowGetter={this.getRowAt}
+          rowsCount={this.getSize()}
+          onRowExpandToggle={this.onRowExpandToggle}
+          toolbar={<CustomToolbar groupBy={this.state.groupBy} onColumnGroupAdded={this.onColumnGroupAdded} onColumnGroupDeleted={this.onColumnGroupDeleted}/>}
+          rowHeight={50}
+          minHeight={600}
+        />
       </DraggableContainer>
     );
   }

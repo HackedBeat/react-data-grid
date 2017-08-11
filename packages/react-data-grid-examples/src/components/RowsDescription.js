@@ -1,7 +1,8 @@
+const React = require('react');
 
 module.exports = React.createClass({
-  render : function(){
-    return(
+  render: function() {
+    return (
       <div>
         <p>The rows property should be an array of objects whose property names match the key property of each column</p>
         <div className="code-block js">
@@ -10,6 +11,6 @@ module.exports = React.createClass({
             </code>
           </pre>
         </div>
-      </div>)
-    }
-  })
+      </div>);
+  }
+});

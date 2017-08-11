@@ -1,6 +1,7 @@
+const React = require('react');
 const markdown = require('markdown');
 
-var DocumentContainer = React.createClass({
+let DocumentContainer = React.createClass({
   propTypes: {
     documentContent: React.PropTypes.string.isRequired,
     documentName: React.PropTypes.string.isRequired,
@@ -19,12 +20,12 @@ var DocumentContainer = React.createClass({
     return (
       <div className={'pull-left'} style={ {marginLeft: '100px'} }>
         <h3>{ this.props.documentName }</h3>
-        <div dangerouslySetInnerHTML={ this.getHtml() }></div>
+        <div dangerouslySetInnerHTML={ this.getHtml() } />
       </div>);
   }
 });
 
-var ComponentDocs = React.createClass({
+let ComponentDocs = React.createClass({
   getInitialState: function() {
     return { selectedDocumentIndex: 0, documentContent: '' };
   },
@@ -34,7 +35,7 @@ var ComponentDocs = React.createClass({
   },
 
   getDocumentContent(key) {
-    var documentPath = generatedDocs[key].path;
+    let documentPath = generatedDocs[key].path;
     $.ajax({
       url: documentPath,
       success: function(documentContent) {
@@ -49,13 +50,13 @@ var ComponentDocs = React.createClass({
   },
 
   getComponentDocs: function() {
-    var docsToRender = [];
-    for (var key in generatedDocs) {
+    let docsToRender = [];
+    for (let key in generatedDocs) {
       if (generatedDocs.hasOwnProperty(key)) {
-        var className = key === this.state.selectedDocumentIndex ? 'active' : '';
-        var doc = generatedDocs[key];
+        let className = key === this.state.selectedDocumentIndex ? 'active' : '';
+        let doc = generatedDocs[key];
         docsToRender.push(
-          <li role="presentation" className={className}>
+          <li key={key} role="presentation" className={className}>
             <a href="#" onClick={function(index, e) { this.onNavBarClicked(index, e); }.bind(this, key) }>{doc.name}</a>
           </li>);
       }
@@ -72,7 +73,7 @@ var ComponentDocs = React.createClass({
   },
 
   render: function() {
-    var selectedDocumentIndex = this.state.selectedDocumentIndex;
+    let selectedDocumentIndex = this.state.selectedDocumentIndex;
     return (
       <div>
         <h1 id="js-api-refernce">Components Docs</h1>

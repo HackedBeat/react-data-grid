@@ -72,8 +72,8 @@ const MyContextMenu = React.createClass({
     onRowDelete: React.PropTypes.func.isRequired,
     onRowInsertAbove: React.PropTypes.func.isRequired,
     onRowInsertBelow: React.PropTypes.func.isRequired,
-    rowIdx: React.PropTypes.string.isRequired,
-    idx: React.PropTypes.string.isRequired
+    rowIdx: React.PropTypes.number,
+    idx: React.PropTypes.number
   },
 
   onRowDelete(e, data) {

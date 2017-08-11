@@ -1,15 +1,15 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var ReactRouter = require('react-router');
+let React = require('react');
+let ReactDOM = require('react-dom');
+let ReactRouter = require('react-router');
 
-var gettingStarted = require('./scripts/documentation01-gettingstarted');
-var apiReference = require('./scripts/documentation02-apireference');
-var componentsDocs = require('./scripts/documentation03-components');
+let gettingStarted = require('./scripts/documentation01-gettingstarted');
+let apiReference = require('./scripts/documentation02-apireference');
+let componentsDocs = require('./scripts/documentation03-components');
 
-var { Route, RouteHandler } = ReactRouter;
+let { Route, RouteHandler } = ReactRouter;
 
-var App = React.createClass({
-  render: function () {
+let App = React.createClass({
+  render: function() {
     return (
       <div>
         <h1 className="page-header">Documentation</h1>
@@ -19,14 +19,14 @@ var App = React.createClass({
   }
 });
 
-var routes = (
+let routes = (
   <Route handler={App}>
-      <Route name="gettingstarted" handler={gettingStarted} />
-      <Route name="apireference" handler={apiReference} />
-      <Route name="componentsDocs" handler={componentsDocs} />
+    <Route name="gettingstarted" handler={gettingStarted} />
+    <Route name="apireference" handler={apiReference} />
+    <Route name="componentsDocs" handler={componentsDocs} />
   </Route>
 );
 
-ReactRouter.run(routes, function (Handler) {
+ReactRouter.run(routes, function(Handler) {
   ReactDOM.render(<Handler/>, document.getElementById('documentation'));
 });

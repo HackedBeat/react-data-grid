@@ -1,3 +1,4 @@
+/* eslint-disable no-console, no-alert */
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
@@ -50,7 +51,7 @@ const Example = React.createClass({
       rows.push({
         id: i,
         title: titles[Math.floor((Math.random() * 4))],
-        name: "Name " + i,
+        name: 'Name ' + i,
         age: Math.floor((Math.random() * 100) + 1)
       });
     }
@@ -90,7 +91,7 @@ const Example = React.createClass({
   render: function() {
     return (
       <ReactDataGrid
-        ref={ (node) => this.grid = node }
+        ref={(node) => {this.grid = node;}}
         columns={this.getColumns()}
         enableCellSelect={true}
         rowGetter={this.rowGetter}
