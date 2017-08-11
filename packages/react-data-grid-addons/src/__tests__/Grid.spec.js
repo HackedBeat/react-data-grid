@@ -909,11 +909,11 @@ describe('Grid', function() {
         dragged: null,
         copied: null
       }));
-      expect(meta.onCellClick).toBeFunction();
-      expect(meta.onCommit).toBeFunction();
-      expect(meta.onCommitCancel).toBeFunction();
-      expect(meta.handleDragEnterRow).toBeFunction();
-      expect(meta.handleTerminateDrag).toBeFunction();
+      expect(typeof meta.onCellClick).toBe("function");
+      expect(typeof meta.onCommit).toBe("function");
+      expect(typeof meta.onCommitCancel).toBe("function");
+      expect(typeof meta.handleDragEnterRow).toBe("function");
+      expect(typeof meta.handleTerminateDrag).toBe("function");
     });
 
     describe('Changing Grid state', function() {
