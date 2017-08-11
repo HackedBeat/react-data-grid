@@ -186,6 +186,8 @@ const Cell = React.createClass({
     if (typeof this.props.column.getRowMetaData === 'function') {
       return this.props.column.getRowMetaData(this.getRowData(), this.props.column);
     }
+
+    return undefined;
   },
 
   getCellClass() {
@@ -503,7 +505,7 @@ const Cell = React.createClass({
       isExpanded: this.props.isExpanded
     });
 
-    let dragHandle = (!this.isActive() && ColumnUtils.canEdit(this.props.column, this.props.rowData, this.props.cellMetaData.enableCellSelect)) ? <div className="drag-handle" draggable="true" onDoubleClick={this.onDragHandleDoubleClick}><span style={{ display: 'none' }}></span></div> : null;
+    let dragHandle = (!this.isActive() && ColumnUtils.canEdit(this.props.column, this.props.rowData, this.props.cellMetaData.enableCellSelect)) ? <div className="drag-handle" draggable="true" onDoubleClick={this.onDragHandleDoubleClick}><span style={{ display: 'none' }} /></div> : null;
     let events = this.getEvents();
     const tooltip = this.props.tooltip ? (<span className="cell-tooltip-text">{this.props.tooltip}</span>) : null;
 

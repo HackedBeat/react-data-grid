@@ -466,6 +466,8 @@ const ReactDataGrid = React.createClass({
     if (selectedRow.length > 0) {
       return selectedRow[0];
     }
+
+    return undefined;
   },
 
   useNewRowSelection() {
@@ -621,15 +623,15 @@ const ReactDataGrid = React.createClass({
 
   getRowOffsetHeight(): number {
     let offsetHeight = 0;
-    this.getHeaderRows().forEach((row) => offsetHeight += parseFloat(row.height, 10) );
+    this.getHeaderRows().forEach((row) => {offsetHeight += parseFloat(row.height, 10);} );
     return offsetHeight;
   },
 
   getHeaderRows(): Array<{ref: Function; height: number;}> {
-    let rows = [{ ref: (node) => this.row = node, height: this.props.headerRowHeight || this.props.rowHeight, rowType: 'header' }];
+    let rows = [{ ref: (node) => {this.row = node;}, height: this.props.headerRowHeight || this.props.rowHeight, rowType: 'header' }];
     if (this.state.canFilter === true) {
       rows.push({
-        ref: (node) => this.filterRow = node,
+        ref: (node) => {this.filterRow = node;},
         filterable: true,
         onFilterChange: this.props.onAddFilter,
         height: this.props.headerFiltersHeight,
@@ -844,10 +846,10 @@ const ReactDataGrid = React.createClass({
     let unshiftedCols = {};
     if (this.props.rowActionsCell || (props.enableRowSelect && !this.props.rowSelection) || (props.rowSelection && props.rowSelection.showCheckbox !== false)) {
       let headerRenderer = props.enableRowSelect === 'single' ? null :
-      <div className="react-grid-checkbox-container checkbox-align">
-        <input className="react-grid-checkbox" type="checkbox" name="select-all-checkbox" id="select-all-checkbox" ref={grid => this.selectAllCheckbox = grid} onChange={this.handleCheckboxChange} />
-        <label htmlFor="select-all-checkbox" className="react-grid-checkbox-label"></label>
-      </div>;
+        (<div className="react-grid-checkbox-container checkbox-align">
+          <input className="react-grid-checkbox" type="checkbox" name="select-all-checkbox" id="select-all-checkbox" ref={grid => {this.selectAllCheckbox = grid;}} onChange={this.handleCheckboxChange} />
+          <label htmlFor="select-all-checkbox" className="react-grid-checkbox-label" />
+        </div>);
       let Formatter = this.props.rowActionsCell ? this.props.rowActionsCell : CheckboxEditor;
       let selectColumn = {
         key: 'select-row',
@@ -886,6 +888,8 @@ const ReactDataGrid = React.createClass({
     } else if (isFunction(Toolbar)) {
       return <Toolbar {...toolBarProps}/>;
     }
+
+    return null;
   },
 
   render() {
@@ -934,7 +938,7 @@ const ReactDataGrid = React.createClass({
         {toolbar}
         <div className="react-grid-Main">
           <BaseGrid
-            ref={(node) => this.base = node}
+            ref={(node) => {this.base = node;}}
             {...this.props}
             rowKey={this.props.rowKey}
             headerRows={this.getHeaderRows()}
@@ -961,9 +965,9 @@ const ReactDataGrid = React.createClass({
             rowScrollTimeout={this.props.rowScrollTimeout}
             contextMenu={this.props.contextMenu}
             overScan={this.props.overScan} />
-          </div>
         </div>
-      );
+      </div>
+    );
   }
 });
 

@@ -63,7 +63,7 @@ const Header = React.createClass({
         columnMetrics: shallowCloneObject(state.columnMetrics)
       };
       resizing.columnMetrics = ColumnMetrics.resizeColumn(
-          resizing.columnMetrics, pos, width);
+        resizing.columnMetrics, pos, width);
 
       // we don't want to influence scrollLeft while resizing
       if (resizing.columnMetrics.totalWidth < state.columnMetrics.totalWidth) {
@@ -108,7 +108,7 @@ const Header = React.createClass({
 
       headerRows.push(<HeaderRow
         key={row.ref}
-        ref={(node) => { return row.rowType === 'filter' ? this.filterRow = node : this.row = node; }}
+        ref={(node) => { return row.rowType === 'filter' ? (this.filterRow = node) : (this.row = node); }}
         rowType={row.rowType}
         style={headerRowStyle}
         onColumnResize={this.onColumnResize}
@@ -126,7 +126,7 @@ const Header = React.createClass({
         onSort={this.props.onSort}
         onScroll={this.props.onScroll}
         getValidFilterValues={this.props.getValidFilterValues}
-        />);
+      />);
     });
     return headerRows;
   },

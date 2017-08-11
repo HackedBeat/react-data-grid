@@ -68,6 +68,8 @@ const Row = React.createClass({
         return this.getColumn(this.props.columns, selected.idx);
       }
     }
+
+    return undefined;
   },
 
   getCellRenderer(columnKey) {
@@ -85,12 +87,12 @@ const Row = React.createClass({
     const baseCellProps = { key: `${key}-${idx}`, idx: i, rowIdx: idx, height: this.getRowHeight(), column, cellMetaData };
 
     if ((i < colVisibleStart || i > colVisibleEnd) && !locked) {
-      return <OverflowCell ref={(node) => this[key] = node} {...baseCellProps} />;
+      return <OverflowCell ref={(node) => { this[key] = node; }} {...baseCellProps} />;
     }
 
     const { row, isSelected } = this.props;
     const cellProps = {
-      ref: (node) => this[key] = node,
+      ref: (node) => { this[key] = node; },
       value: this.getCellValue(key || i),
       rowData: row,
       isRowSelected: isSelected,

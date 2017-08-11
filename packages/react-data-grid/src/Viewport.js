@@ -1,8 +1,8 @@
-const React                = require('react');
-const Canvas               = require('./Canvas');
-const ViewportScroll       = require('./ViewportScrollMixin');
-const cellMetaDataShape    = require('./PropTypeShapes/CellMetaDataShape');
-const PropTypes            = React.PropTypes;
+const React = require('react');
+const Canvas = require('./Canvas');
+const ViewportScroll = require('./ViewportScrollMixin');
+const cellMetaDataShape = require('./PropTypeShapes/CellMetaDataShape');
+const PropTypes = React.PropTypes;
 
 const Viewport = React.createClass({
   mixins: [ViewportScroll],
@@ -42,7 +42,7 @@ const Viewport = React.createClass({
     rowGroupRenderer: PropTypes.func
   },
 
-  onScroll(scroll: {scrollTop: number; scrollLeft: number}) {
+  onScroll(scroll: { scrollTop: number; scrollLeft: number }) {
     this.updateScroll(
       scroll.scrollTop, scroll.scrollLeft,
       this.state.height,
@@ -51,11 +51,11 @@ const Viewport = React.createClass({
     );
 
     if (this.props.onScroll) {
-      this.props.onScroll({scrollTop: scroll.scrollTop, scrollLeft: scroll.scrollLeft});
+      this.props.onScroll({ scrollTop: scroll.scrollTop, scrollLeft: scroll.scrollLeft });
     }
   },
 
-  getScroll(): {scrollLeft: number; scrollTop: number} {
+  getScroll(): { scrollLeft: number; scrollTop: number } {
     return this.canvas.getScroll();
   },
 
@@ -78,7 +78,7 @@ const Viewport = React.createClass({
         className="react-grid-Viewport"
         style={style}>
         <Canvas
-          ref={(node) => this.canvas = node}
+          ref={(node) => { this.canvas = node; }}
           rowKey={this.props.rowKey}
           totalWidth={this.props.totalWidth}
           width={this.props.columnMetrics.width}

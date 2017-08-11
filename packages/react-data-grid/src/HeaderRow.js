@@ -120,12 +120,12 @@ const HeaderRow = React.createClass({
       let column = Object.assign({ rowType: this.props.rowType }, this.getColumn(this.props.columns, i));
       let _renderer = this.getHeaderRenderer(column);
       if (column.key === 'select-row' && this.props.rowType === 'filter') {
-        _renderer = <div></div>;
+        _renderer = <div />;
       }
       let HeaderCell = column.draggable ? this.props.draggableHeaderCell : BaseHeaderCell;
       let cell = (
         <HeaderCell
-          ref={(node) => this.cells[i] = node}
+          ref={(node) => {this.cells[i] = node;}}
           key={i}
           height={this.props.height}
           column={column}
@@ -134,7 +134,7 @@ const HeaderRow = React.createClass({
           onResize={this.props.onColumnResize}
           onResizeEnd={this.props.onColumnResizeEnd}
           onHeaderDrop={this.props.onHeaderDrop}
-          />
+        />
       );
       if (column.locked) {
         lockedCells.push(cell);

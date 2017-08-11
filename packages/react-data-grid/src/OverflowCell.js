@@ -15,7 +15,7 @@ class OverflowCell extends React.Component {
   }
 
   render() {
-    return (<div tabIndex="-1" style={this.getStyle() } width="100%" className="react-grid-Cell"></div>);
+    return (<div tabIndex="-1" style={this.getStyle() } width="100%" className="react-grid-Cell" />);
   }
 }
 

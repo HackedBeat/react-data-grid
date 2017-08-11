@@ -4,13 +4,13 @@ const React = require('react');
 const ContainerEditorWrapper = require('../ContainerEditorWrapper');
 
 class FakeComponent extends React.Component {
-    getValue = jasmine.createSpy()
-    getInputNode = jasmine.createSpy()
-    render() {return (<div></div>);}
+  getValue = jasmine.createSpy()
+  getInputNode = jasmine.createSpy()
+  render() {return (<div />);}
 }
 
 class FakeContainer extends React.Component {
-    render() { return (<FakeComponent ref={this.props.refCallback} />); }
+  render() { return (<FakeComponent ref={this.props.refCallback} />); }
 }
 
 FakeContainer.propTypes = {

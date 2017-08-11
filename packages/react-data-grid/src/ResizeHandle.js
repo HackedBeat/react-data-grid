@@ -14,10 +14,10 @@ const ResizeHandle   = React.createClass({
   render(): ?ReactElement {
     return (
       <Draggable {...this.props}
-      className="react-grid-HeaderCell__resizeHandle"
-      style={this.style}
+        className="react-grid-HeaderCell__resizeHandle"
+        style={this.style}
       />
-  );
+    );
   }
 });
 

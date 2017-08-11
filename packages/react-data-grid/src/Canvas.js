@@ -251,6 +251,8 @@ const Canvas = React.createClass({
     if (React.isValidElement(this.props.rowRenderer)) {
       return React.cloneElement(this.props.rowRenderer, props);
     }
+
+    return null;
   },
 
   renderPlaceholder(key: string, height: number): ?ReactElement {
@@ -273,7 +275,7 @@ const Canvas = React.createClass({
     let rows = this.getRows(displayStart, displayEnd)
       .map((r, idx) => this.renderRow({
         key: `row-${displayStart + idx}`,
-        ref: (node) => this.rows[idx] = node,
+        ref: (node) => {this.rows[idx] = node;},
         idx: displayStart + idx,
         visibleStart: this.props.visibleStart,
         visibleEnd: this.props.visibleEnd,

@@ -6,6 +6,8 @@ module.exports = {
     } else if (typeof Immutable !== 'undefined') {
       return columns.get(idx);
     }
+
+    return undefined;
   },
 
   spliceColumn(metrics, idx, column) {
@@ -23,6 +25,8 @@ module.exports = {
     } else if (typeof Immutable !== 'undefined') {
       return columns.size;
     }
+
+    return undefined;
   },
 
   // Logic extented to allow for functions to be passed down in column.editable

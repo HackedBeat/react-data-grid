@@ -13,7 +13,7 @@ let HeaderStub = React.createClass({
   setScrollLeft() {
   },
   render() {
-    return (<div></div>);
+    return (<div />);
   }
 });
 let ViewportStub = React.createClass({
@@ -23,7 +23,7 @@ let ViewportStub = React.createClass({
   setScrollLeft() {
   },
   render() {
-    return (<div></div>);
+    return (<div />);
   }
 });
 

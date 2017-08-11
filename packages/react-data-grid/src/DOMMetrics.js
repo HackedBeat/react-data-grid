@@ -135,6 +135,8 @@ let MetricsMixin = {
     if (this.hasOwnProperty('DOMMetrics')) {
       delete this.DOMMetrics;
     }
+
+    return undefined;
   },
 
   registerMetrics(metrics: any): any {

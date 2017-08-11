@@ -1,4 +1,4 @@
-import React, {PropTypes, Component} from 'react';
+import React, { PropTypes, Component } from 'react';
 
 export default class GroupedColumnButton extends Component {
   render() {
@@ -9,12 +9,12 @@ export default class GroupedColumnButton extends Component {
       whiteSpace: 'nowrap'
     };
     return (
-      <button  className="btn grouped-col-btn btn-sm"><span style={style}>{this.props.name}</span>
+      <button className="btn grouped-col-btn btn-sm"><span style={style}>{this.props.name}</span>
         <span
           className="glyphicon glyphicon-trash"
-          style={{float: 'right', paddingLeft: '5px'}}
-          onClick={this.props.onColumnGroupDeleted.bind(null, this.props.columnKey)}>
-        </span>
+          style={{ float: 'right', paddingLeft: '5px' }}
+          onClick={this.props.onColumnGroupDeleted.bind(null, this.props.columnKey)}
+        />
       </button>
     );
   }

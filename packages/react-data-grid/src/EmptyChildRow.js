@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import ColumnUtils from './ColumnUtils';
 
 class EmptyChildRow extends React.Component {
-
   constructor() {
     super();
     this.onAddSubRow = this.onAddSubRow.bind(this);
@@ -44,7 +43,7 @@ class EmptyChildRow extends React.Component {
         <div className="rdg-empty-child-row" style={{ marginLeft: '30px', lineHeight: `${cellHeight}px` }}>
           <div className="'rdg-child-row-action-cross rdg-child-row-action-cross-last" />
           <div style={{ left: left, top: top, width: width, height: height }} className="rdg-child-row-btn" onClick={this.onAddSubRow}>
-            <div className="glyphicon glyphicon-plus-sign"></div>
+            <div className="glyphicon glyphicon-plus-sign" />
           </div>
         </div>
       </div>

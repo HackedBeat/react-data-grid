@@ -50,7 +50,7 @@ const EditorContainer = React.createClass({
   },
 
   createEditor(): ReactElement {
-    let editorRef = (c) => this.editor = c;
+    let editorRef = (c) => {this.editor = c;};
     let editorProps = {
       ref: editorRef,
       column: this.props.column,
@@ -151,6 +151,8 @@ const EditorContainer = React.createClass({
     if (typeof this.props.column.getRowMetaData === 'function') {
       return this.props.column.getRowMetaData(this.props.rowData, this.props.column);
     }
+
+    return undefined;
   },
 
   getEditor(): Editor {
@@ -286,17 +288,19 @@ const EditorContainer = React.createClass({
 
   renderStatusIcon(): ?ReactElement {
     if (this.state.isInvalid === true) {
-      return <span className="glyphicon glyphicon-remove form-control-feedback"></span>;
+      return <span className="glyphicon glyphicon-remove form-control-feedback" />;
     }
+
+    return null;
   },
 
   render(): ?ReactElement {
     return (
-        <div className={this.getContainerClass()} onBlur={this.handleBlur} onKeyDown={this.onKeyDown} onContextMenu={this.handleRightClick}>
-          {this.createEditor()}
-          {this.renderStatusIcon()}
-        </div>
-      );
+      <div className={this.getContainerClass()} onBlur={this.handleBlur} onKeyDown={this.onKeyDown} onContextMenu={this.handleRightClick}>
+        {this.createEditor()}
+        {this.renderStatusIcon()}
+      </div>
+    );
   }
 });
 

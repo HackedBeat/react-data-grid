@@ -80,18 +80,22 @@ module.exports = {
     let columns = this.state.columnMetrics.columns;
     if (Array.isArray(columns)) {
       return columns[idx];
-    }else if (typeof Immutable !== 'undefined') {
+    } else if (typeof Immutable !== 'undefined') {
       return columns.get(idx);
     }
+
+    return undefined;
   },
 
   getSize() {
     let columns = this.state.columnMetrics.columns;
     if (Array.isArray(columns)) {
       return columns.length;
-    }else if (typeof Immutable !== 'undefined') {
+    } else if (typeof Immutable !== 'undefined') {
       return columns.size;
     }
+
+    return undefined;
   },
 
   metricsUpdated() {
