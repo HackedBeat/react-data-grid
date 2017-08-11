@@ -1,8 +1,8 @@
 const shallowCloneObject = require('./shallowCloneObject');
 const sameColumn = require('./ColumnComparer');
 const ColumnUtils = require('./ColumnUtils');
-const getScrollbarSize  = require('./getScrollbarSize');
-const isColumnsImmutable  = require('./utils/isColumnsImmutable');
+const getScrollbarSize = require('./getScrollbarSize');
+const isColumnsImmutable = require('./utils/isColumnsImmutable');
 
 type Column = {
   key: string;
@@ -63,7 +63,7 @@ function setColumnOffsets(columns) {
  * @param {ColumnMetricsType} metrics
  */
 function recalculate(metrics: ColumnMetricsType): ColumnMetricsType {
-    // compute width for columns which specify width
+  // compute width for columns which specify width
   let columns = setColumnWidths(metrics.columns, metrics.totalWidth);
 
   let unallocatedWidth = columns.filter(c => c.width).reduce((w, column) => {

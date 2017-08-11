@@ -1,7 +1,7 @@
 
-const React          = require('react');
-const moment         = require('moment');
-const PropTypes = React.PropTypes;
+const React = require('react');
+const PropTypes = require('prop-types');
+const moment = require('moment');
 
 const DateRangeFormatter = React.createClass({
 

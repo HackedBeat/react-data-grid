@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import AppConstants from './AppConstants';
 
 const CellExpand = React.createClass({
@@ -9,7 +10,7 @@ const CellExpand = React.createClass({
   componentWillReceiveProps(nextProps) {
     let expanded = nextProps.expandableOptions && nextProps.expandableOptions.expanded;
     if (this.state.expanded !== expanded) {
-      this.setState({expanded});
+      this.setState({ expanded });
     }
   },
   propTypes: {

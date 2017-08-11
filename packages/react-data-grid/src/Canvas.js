@@ -1,7 +1,7 @@
 const React = require('react');
+const PropTypes = require('prop-types');
 const ReactDOM = require('react-dom');
 const joinClasses = require('classnames');
-const PropTypes = React.PropTypes;
 const ScrollShim = require('./ScrollShim');
 const Row = require('./Row');
 const cellMetaDataShape = require('./PropTypeShapes/CellMetaDataShape');
@@ -42,26 +42,26 @@ const Canvas = React.createClass({
     columns: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
     cellMetaData: PropTypes.shape(cellMetaDataShape).isRequired,
     selectedRows: PropTypes.array,
-    rowKey: React.PropTypes.string,
-    rowScrollTimeout: React.PropTypes.number,
+    rowKey: PropTypes.string,
+    rowScrollTimeout: PropTypes.number,
     contextMenu: PropTypes.element,
     getSubRowDetails: PropTypes.func,
-    rowSelection: React.PropTypes.oneOfType([
-      React.PropTypes.shape({
-        indexes: React.PropTypes.arrayOf(React.PropTypes.number).isRequired
+    rowSelection: PropTypes.oneOfType([
+      PropTypes.shape({
+        indexes: PropTypes.arrayOf(PropTypes.number).isRequired
       }),
-      React.PropTypes.shape({
-        isSelectedKey: React.PropTypes.string.isRequired
+      PropTypes.shape({
+        isSelectedKey: PropTypes.string.isRequired
       }),
-      React.PropTypes.shape({
-        keys: React.PropTypes.shape({
-          values: React.PropTypes.array.isRequired,
-          rowKey: React.PropTypes.string.isRequired
+      PropTypes.shape({
+        keys: PropTypes.shape({
+          values: PropTypes.array.isRequired,
+          rowKey: PropTypes.string.isRequired
         }).isRequired
       })
     ]),
-    rowGroupRenderer: React.PropTypes.func,
-    isScrolling: React.PropTypes.bool
+    rowGroupRenderer: PropTypes.func,
+    isScrolling: PropTypes.bool
   },
 
   getDefaultProps() {
@@ -181,7 +181,7 @@ const Canvas = React.createClass({
   },
 
   getScroll() {
-    let {scrollTop, scrollLeft} = ReactDOM.findDOMNode(this);
+    let { scrollTop, scrollLeft } = ReactDOM.findDOMNode(this);
     return { scrollTop, scrollLeft };
   },
 
@@ -197,7 +197,7 @@ const Canvas = React.createClass({
 
     // Else use new rowSelection props
     if (this.props.rowSelection) {
-      let {keys, indexes, isSelectedKey} = this.props.rowSelection;
+      let { keys, indexes, isSelectedKey } = this.props.rowSelection;
       return RowUtils.isRowSelected(keys, indexes, isSelectedKey, row, idx);
     }
 
@@ -245,7 +245,7 @@ const Canvas = React.createClass({
     }
     let RowsRenderer = this.props.rowRenderer;
     if (typeof RowsRenderer === 'function') {
-      return <RowsRenderer {...props}/>;
+      return <RowsRenderer {...props} />;
     }
 
     if (React.isValidElement(this.props.rowRenderer)) {
@@ -275,7 +275,7 @@ const Canvas = React.createClass({
     let rows = this.getRows(displayStart, displayEnd)
       .map((r, idx) => this.renderRow({
         key: `row-${displayStart + idx}`,
-        ref: (node) => {this.rows[idx] = node;},
+        ref: (node) => { this.rows[idx] = node; },
         idx: displayStart + idx,
         visibleStart: this.props.visibleStart,
         visibleEnd: this.props.visibleEnd,
@@ -319,7 +319,7 @@ const Canvas = React.createClass({
       <div
         style={style}
         onScroll={this.onScroll}
-        className={joinClasses('react-grid-Canvas', this.props.className, { opaque: this.props.cellMetaData.selected && this.props.cellMetaData.selected.active }) }>
+        className={joinClasses('react-grid-Canvas', this.props.className, { opaque: this.props.cellMetaData.selected && this.props.cellMetaData.selected.active })}>
         <RowsContainer
           width={this.props.width}
           rows={rows}

@@ -1,23 +1,23 @@
-const React               = require('react');
-const shallowCloneObject  = require('./shallowCloneObject');
+const PropTypes = require('prop-types');
+const shallowCloneObject = require('./shallowCloneObject');
 
 let contextTypes = {
-  metricsComputator: React.PropTypes.object
+  metricsComputator: PropTypes.object
 };
 
 let MetricsComputatorMixin = {
 
   childContextTypes: contextTypes,
 
-  getChildContext(): {metricsComputator: any} {
-    return {metricsComputator: this};
+  getChildContext(): { metricsComputator: any } {
+    return { metricsComputator: this };
   },
 
   getMetricImpl(name: string): any {
     return this._DOMMetrics.metrics[name].value;
   },
 
-  registerMetricsImpl(component: ReactComponent, metrics: any): {[key:string]: any} {
+  registerMetricsImpl(component: ReactComponent, metrics: any): { [key: string]: any } {
     let getters = {};
     let s = this._DOMMetrics;
 
@@ -25,7 +25,7 @@ let MetricsComputatorMixin = {
       if (s.metrics[name] !== undefined) {
         throw new Error('DOM metric ' + name + ' is already defined');
       }
-      s.metrics[name] = {component, computator: metrics[name].bind(component)};
+      s.metrics[name] = { component, computator: metrics[name].bind(component) };
       getters[name] = this.getMetricImpl.bind(null, name);
     }
 
@@ -117,7 +117,7 @@ let MetricsMixin = {
       for (let name in this._DOMMetricsDefs) {
         if (!this._DOMMetricsDefs.hasOwnProperty(name)) continue;
 
-        this.DOMMetrics[name] = () => {};
+        this.DOMMetrics[name] = () => { };
       }
     }
   },

@@ -1,22 +1,21 @@
-const React             = require('react');
-const shallowEqual    = require('fbjs/lib/shallowEqual');
-const BaseHeaderCell        = require('./HeaderCell');
-const getScrollbarSize  = require('./getScrollbarSize');
-const ExcelColumn  = require('./PropTypeShapes/ExcelColumn');
-const ColumnUtilsMixin  = require('./ColumnUtils');
-const SortableHeaderCell    = require('./cells/headerCells/SortableHeaderCell');
-const FilterableHeaderCell  = require('./cells/headerCells/FilterableHeaderCell');
+const React = require('react');
+const PropTypes = require('prop-types');
+const shallowEqual = require('fbjs/lib/shallowEqual');
+const BaseHeaderCell = require('./HeaderCell');
+const getScrollbarSize = require('./getScrollbarSize');
+const ExcelColumn = require('./PropTypeShapes/ExcelColumn');
+const ColumnUtilsMixin = require('./ColumnUtils');
+const SortableHeaderCell = require('./cells/headerCells/SortableHeaderCell');
+const FilterableHeaderCell = require('./cells/headerCells/FilterableHeaderCell');
 const HeaderCellType = require('./HeaderCellType');
 const createObjectWithProperties = require('./createObjectWithProperties');
 require('../../../themes/react-data-grid-header.css');
 
-const PropTypes         = React.PropTypes;
-
-const HeaderRowStyle  = {
-  overflow: React.PropTypes.string,
+const HeaderRowStyle = {
+  overflow: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  height: React.PropTypes.number,
-  position: React.PropTypes.string
+  height: PropTypes.number,
+  position: PropTypes.string
 };
 
 // The list of the propTypes that we want to include in the HeaderRow div
@@ -32,7 +31,7 @@ const HeaderRow = React.createClass({
     onColumnResizeEnd: PropTypes.func,
     style: PropTypes.shape(HeaderRowStyle),
     sortColumn: PropTypes.string,
-    sortDirection: React.PropTypes.oneOf(Object.keys(SortableHeaderCell.DEFINE_SORT)),
+    sortDirection: PropTypes.oneOf(Object.keys(SortableHeaderCell.DEFINE_SORT)),
     cellRenderer: PropTypes.func,
     headerCellRenderer: PropTypes.func,
     filterable: PropTypes.bool,

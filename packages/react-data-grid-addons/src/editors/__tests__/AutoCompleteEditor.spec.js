@@ -1,5 +1,3 @@
-
-
 let React              = require('react');
 let TestUtils          = require('react-addons-test-utils');
 let rewire             = require('rewire');
@@ -109,16 +107,16 @@ describe('AutoCompleteEditor', () => {
   describe('interactions', () => {
     it('should render', () => {
       component = TestUtils.renderIntoDocument(<AutoCompleteEditor
-      onCommit={fakeCb}
-      options={fakeOptions}
-      label="title"
-      value="value"
-      valueParams={fakeParams}
-      column={fakeColumn}
-      resultIdentifier="id"
-      search={() => true}
-      height={30}
-      onKeyDown={fakeCb}/>);
+        onCommit={fakeCb}
+        options={fakeOptions}
+        label="title"
+        value="value"
+        valueParams={fakeParams}
+        column={fakeColumn}
+        resultIdentifier="id"
+        search={() => true}
+        height={30}
+        onKeyDown={fakeCb}/>);
 
       expect(component).toBeDefined();
 

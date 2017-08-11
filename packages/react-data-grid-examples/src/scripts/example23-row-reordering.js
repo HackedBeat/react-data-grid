@@ -1,16 +1,18 @@
+/* eslint-disable new-cap */
+const React = require('react');
+const PropTypes = require('prop-types');
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
-const React = require('react');
 const {
-   Draggable: { Container: DraggableContainer, RowActionsCell, DropTargetRowContainer },
-   Data: { Selectors }
+  Draggable: { Container: DraggableContainer, RowActionsCell, DropTargetRowContainer },
+  Data: { Selectors }
 } = require('react-data-grid-addons');
 
 const RowRenderer = DropTargetRowContainer(ReactDataGrid.Row);
 
 const Example = React.createClass({
   propTypes: {
-    rowKey: React.PropTypes.string.isRequired
+    rowKey: PropTypes.string.isRequired
   },
 
   getInitialState() {

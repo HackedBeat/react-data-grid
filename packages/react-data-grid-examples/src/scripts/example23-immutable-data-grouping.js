@@ -1,5 +1,6 @@
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
+const PropTypes = require('prop-types');
 const React = require('react');
 const faker = require('faker');
 const Immutable = require('immutable');
@@ -7,7 +8,7 @@ const {
   ToolsPanel: { AdvancedToolbar: Toolbar, GroupedColumnsPanel },
   Data: { Selectors },
   Draggable: { Container: DraggableContainer }
- } = require('react-data-grid-addons');
+} = require('react-data-grid-addons');
 
 faker.locale = 'en_GB';
 
@@ -28,9 +29,9 @@ for (let rowIdx = 1; rowIdx < 100; rowIdx++) {
 
 const CustomToolbar = React.createClass({
   propTypes: {
-    groupBy: React.PropTypes.array.isRequired,
-    onColumnGroupAdded: React.PropTypes.func.isRequired,
-    onColumnGroupDeleted: React.PropTypes.func.isRequired
+    groupBy: PropTypes.array.isRequired,
+    onColumnGroupAdded: PropTypes.func.isRequired,
+    onColumnGroupDeleted: PropTypes.func.isRequired
   },
 
   render() {
@@ -44,7 +45,7 @@ const CustomToolbar = React.createClass({
 const Example = React.createClass({
   getInitialState() {
     return {
-      rows: new Immutable.fromJS(_rows),
+      rows: new Immutable.fromJS(_rows), // eslint-disable-line new-cap
       cols: new Immutable.List(_cols),
       groupBy: [],
       expandedRows: {}
@@ -88,18 +89,18 @@ const Example = React.createClass({
   render() {
     return (
       <DraggableContainer>
-          <ReactDataGrid
-            ref={ node => this.grid = node }
-            enableCellSelect={true}
-            enableDragAndDrop={true}
-            columns={_cols}
-            rowGetter={this.getRowAt}
-            rowsCount={this.getSize()}
-            onRowExpandToggle={this.onRowExpandToggle}
-            toolbar={<CustomToolbar groupBy={this.state.groupBy} onColumnGroupAdded={this.onColumnGroupAdded} onColumnGroupDeleted={this.onColumnGroupDeleted}/>}
-            rowHeight={50}
-            minHeight={600}
-            />
+        <ReactDataGrid
+          ref={ node => {this.grid = node;} }
+          enableCellSelect={true}
+          enableDragAndDrop={true}
+          columns={_cols}
+          rowGetter={this.getRowAt}
+          rowsCount={this.getSize()}
+          onRowExpandToggle={this.onRowExpandToggle}
+          toolbar={<CustomToolbar groupBy={this.state.groupBy} onColumnGroupAdded={this.onColumnGroupAdded} onColumnGroupDeleted={this.onColumnGroupDeleted}/>}
+          rowHeight={50}
+          minHeight={600}
+        />
       </DraggableContainer>
     );
   }

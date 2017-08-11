@@ -1,9 +1,9 @@
-const ColumnMetrics        = require('./ColumnMetrics');
-const DOMMetrics           = require('./DOMMetrics');
-Object.assign            = require('object-assign');
-const PropTypes            = require('react').PropTypes;
-const ColumnUtils = require('./ColumnUtils');
 import ReactDOM from 'react-dom';
+const PropTypes = require('prop-types');
+const ColumnMetrics = require('./ColumnMetrics');
+const DOMMetrics = require('./DOMMetrics');
+Object.assign = require('object-assign');
+const ColumnUtils = require('./ColumnUtils');
 
 
 class Column {
@@ -13,9 +13,9 @@ class Column {
 }
 
 type ColumnMetricsType = {
-    columns: Array<Column>;
-    totalWidth: number;
-    minColumnWidth: number;
+  columns: Array<Column>;
+  totalWidth: number;
+  minColumnWidth: number;
 };
 
 module.exports = {
@@ -34,7 +34,7 @@ module.exports = {
     }
   },
 
-  getDefaultProps(): {minColumnWidth: number; columnEquality: (a: Column, b: Column) => boolean}  {
+  getDefaultProps(): { minColumnWidth: number; columnEquality: (a: Column, b: Column) => boolean } {
     return {
       minColumnWidth: 80,
       columnEquality: ColumnMetrics.sameColumn
@@ -48,9 +48,9 @@ module.exports = {
   componentWillReceiveProps(nextProps: ColumnMetricsType) {
     if (nextProps.columns) {
       if (!ColumnMetrics.sameColumns(this.props.columns, nextProps.columns, this.props.columnEquality) ||
-          nextProps.minWidth !== this.props.minWidth) {
+        nextProps.minWidth !== this.props.minWidth) {
         let columnMetrics = this.createColumnMetrics(nextProps);
-        this.setState({columnMetrics: columnMetrics});
+        this.setState({ columnMetrics: columnMetrics });
       }
     }
   },
@@ -100,7 +100,7 @@ module.exports = {
 
   metricsUpdated() {
     let columnMetrics = this.createColumnMetrics();
-    this.setState({columnMetrics});
+    this.setState({ columnMetrics });
   },
 
   createColumnMetrics(props = this.props) {
@@ -114,7 +114,7 @@ module.exports = {
 
   onColumnResize(index: number, width: number) {
     let columnMetrics = ColumnMetrics.resizeColumn(this.state.columnMetrics, index, width);
-    this.setState({columnMetrics});
+    this.setState({ columnMetrics });
     if (this.props.onColumnResize) {
       this.props.onColumnResize(index, width);
     }

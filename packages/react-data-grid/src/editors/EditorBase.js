@@ -1,9 +1,9 @@
-const React                   = require('react');
+const React = require('react');
 const ReactDOM = require('react-dom');
-const ExcelColumn             = require('../PropTypeShapes/ExcelColumn');
+const PropTypes = require('prop-types');
+const ExcelColumn = require('../PropTypeShapes/ExcelColumn');
 
 class EditorBase extends React.Component {
-
   getStyle(): {width: string} {
     return {
       width: '100%'
@@ -28,15 +28,14 @@ class EditorBase extends React.Component {
   inheritContainerStyles(): boolean {
     return true;
   }
-
 }
 
 EditorBase.propTypes = {
-  onKeyDown: React.PropTypes.func.isRequired,
-  value: React.PropTypes.any.isRequired,
-  onBlur: React.PropTypes.func.isRequired,
-  column: React.PropTypes.shape(ExcelColumn).isRequired,
-  commit: React.PropTypes.func.isRequired
+  onKeyDown: PropTypes.func.isRequired,
+  value: PropTypes.any.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  column: PropTypes.shape(ExcelColumn).isRequired,
+  commit: PropTypes.func.isRequired
 };
 
 module.exports = EditorBase;
