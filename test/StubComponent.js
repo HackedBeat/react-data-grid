@@ -5,5 +5,6 @@ module.exports = function(mockTagName: string) {
     let _mockTagName = mockTagName || 'div';
 
     return React.DOM[_mockTagName](null, props.children);
+    // return React.createElement(_mockTagName, {}, props.children);
   };
 };
